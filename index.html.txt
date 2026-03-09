@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Estudio | Merchandising de Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --negro: #1a1a1a; --gris: #f4f4f4; --blanco: #ffffff; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--blanco); color: var(--negro); }
+        
+        /* Header y Logo */
+        header { text-align: center; padding: 50px 20px; background: var(--gris); }
+        .logo-img { max-width: 200px; height: auto; margin-bottom: 15px; }
+        h1 { font-weight: 300; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
+
+        /* Galería Pareja */
+        .seccion-productos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; padding: 40px; max-width: 1100px; margin: auto; 
+        }
+        .item { text-align: center; }
+        .img-box { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; /* Esto hace que todas sean un cuadrado perfecto */
+            overflow: hidden; 
+            background: #eee;
+            border-radius: 4px;
+        }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .item h3 { margin-top: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Contacto */
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
+        .btn { 
+            display: inline-block; padding: 12px 25px; margin: 10px; 
+            text-decoration: none; color: white; font-weight: bold; border-radius: 5px; 
+        }
+        .wpp { background: #25D366; }
+        .ig { background: #E1306C; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo softestudio.png" alt="Logo Soft Estudio" class="logo-img">
+    <h1>Objetos con Identidad</h1>
+</header>
+
+<main class="seccion-productos">
+    <div class="item">
+        <div class="img-box"><img src="remeras.jpg" alt="Remeras"></div>
+        <h3>Remeras Personalizadas</h3>
+    </div>
+
+    <div class="item">
+        <div class="img-box"><img src="gorras.jpg" alt="Gorras"></div>
+        <h3>Gorras & Pilusos</h3>
+    </div>
+
+    <div class="item">
+        <div class="img-box"><img src="vasos.jpg" alt="Vasos"></div>
+        <h3>Vasos & Coctelería</h3>
+    </div>
+</main>
+
+<footer>
+    <p>Recuerdos únicos para eventos inolvidables.</p>
+    <a href="https://wa.me/3534594320" class="btn wpp">WhatsApp</a>
+    <a href="https://instagram.com/sof.estudiodg" class="btn ig">Instagram</a>
+</footer>
+
+</body>
+</html>
