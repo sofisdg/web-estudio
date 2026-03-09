@@ -3,132 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Estudio | Merchandising & Eventos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Soft Estudio | Eventos con Identidad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negro: #1a1a1a; --gris: #f8f8f8; --blanco: #ffffff; --detalle: #666; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--blanco); color: var(--negro); scroll-behavior: smooth; }
-        
-        header { text-align: center; padding: 60px 20px; background: var(--gris); }
-        .logo-img { max-width: 220px; height: auto; margin-bottom: 15px; }
-        
-        /* Lista de Productos */
-        .contenedor-lista { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .producto-fila { 
-            display: flex; align-items: center; padding: 30px 0; 
-            border-bottom: 1px solid #eee; gap: 30px;
+        :root {
+            --negro: #111111;
+            --gris-oscuro: #333333;
+            --detalle: #777777;
+            --blanco: #ffffff;
+            --fondo-transp: rgba(255, 255, 255, 0.92);
         }
-        .producto-fila:last-child { border-bottom: none; }
 
-        .prod-img { 
-            width: 150px; height: 150px; border-radius: 8px; 
-            object-fit: cover; cursor: pointer; transition: transform 0.3s;
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            color: var(--negro);
+            background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            line-height: 1.6;
         }
-        .prod-img:hover { transform: scale(1.05); }
+
+        /* Capa para que el texto sea legible sobre el fondo */
+        .overlay {
+            background: var(--fondo-transp);
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo-img {
+            max-width: 350px; /* Logo más grande como pediste */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-weight: 300;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--gris-oscuro);
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .titulo-seccion {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 4px solid var(--negro);
+            padding-left: 15px;
+            margin: 60px 0 30px 0;
+            background: #f0f0f0;
+            padding: 10px 15px;
+        }
+
+        .producto-fila {
+            display: flex;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #e0e0e0;
+            gap: 25px;
+        }
+
+        .prod-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .prod-img:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         .prod-info { flex: 1; }
-        .prod-info h3 { margin: 0 0 10px 0; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
-        .prod-info p { color: var(--detalle); font-size: 0.95rem; line-height: 1.4; }
 
-        /* Estilo para productos sin imagen */
-        .sin-foto { 
-            width: 150px; height: 150px; background: #333; color: white;
-            display: flex; align-items: center; text-align: center; 
-            font-size: 0.7rem; border-radius: 8px; padding: 10px; box-sizing: border-box;
+        .prod-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: none;
         }
 
-        /* Modal (Efecto Ampliar) */
-        .modal {
-            display: none; position: fixed; z-index: 1000; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
-            justify-content: center; align-items: center; cursor: pointer;
+        .prod-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--detalle);
+            font-weight: 300;
         }
-        .modal img { max-width: 90%; max-height: 80%; border-radius: 5px; }
 
-        /* Footer y Contacto */
-        footer { padding: 60px 20px; text-align: center; background: var(--gris); }
-        .btn { 
-            display: inline-block; padding: 12px 25px; margin: 10px; 
-            text-decoration: none; color: white; font-weight: bold; border-radius: 50px; 
+        .sin-img-box {
+            width: 140px;
+            height: 140px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #999;
+            text-align: center;
+            padding: 10px;
         }
-        .wpp { background: #25D366; } .ig { background: #E1306C; }
+
+        /* Modal para ampliar imagen */
+        #modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center; align-items: center;
+        }
+        #modal img { max-width: 90%; max-height: 85%; border: 3px solid white; }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--negro);
+            color: white;
+        }
+
+        .btn-contacto {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .wpp { background: #25D366; }
+        .ig { background: #E1306C; }
+
     </style>
 </head>
 <body>
 
-<header>
-    <img src="logo softestudio.png" alt="Logo Soft Estudio" class="logo-img">
-    <p>OBJETOS ÚNICOS • EVENTOS CON IDENTIDAD</p>
-</header>
+<div class="overlay">
+    <header>
+        <img src="logo softestudio.png" alt="Soft Estudio Logo" class="logo-img">
+        <h1>Eventos con Identidad</h1>
+    </header>
 
-<main class="contenedor-lista">
+    <div class="contenedor">
 
-    <div class="producto-fila">
-        <img src="logo para evento.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Logo Evento">
-        <div class="prod-info">
-            <h3>Diseño de Logo para Evento</h3>
-            <p>Creamos la identidad visual de tu fiesta. Incluye propuestas personalizadas y aplicaciones.</p>
+        <div class="titulo-seccion">Digital</div>
+        
+        <div class="producto-fila">
+            <img src="logo para evento.jpg" class="prod-img" onclick="abrir(this.src)" alt="Logo">
+            <div class="prod-info">
+                <h3>Diseño de logo para evento</h3>
+                <p>Identidad visual única para tu celebración.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="producto-fila">
-        <div class="sin-foto">MEMORIAS EN VIDEO</div>
-        <div class="prod-info">
-            <h3>Video de fotos para eventos</h3>
-            <p>Plasmamos los mejores recuerdos: el momento más esperado de tu fiesta en un formato emocionante.</p>
+        <div class="producto-fila">
+            <div class="sin-img-box">DIGITAL</div>
+            <div class="prod-info">
+                <h3>Diseño de invitación web</h3>
+                <p>Invitaciones interactivas con confirmación de asistencia y mapas.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="producto-fila">
-        <img src="remeras.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Remeras">
-        <div class="prod-info">
-            <h3>Remeras Personalizadas</h3>
-            <p>Prendas con diseño exclusivo para el staff o como recuerdo especial.</p>
+        <div class="producto-fila">
+            <div class="sin-img-box">DIGITAL</div>
+            <div class="prod-info">
+                <h3>Diseño de invitación en 3 etapas</h3>
+                <p>Save the date, invitación formal y cuenta regresiva.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="producto-fila">
-        <img src="gorras.jpeg" class="prod-img" onclick="ampliar(this.src)" alt="Gorras">
-        <div class="prod-info">
-            <h3>Gorras & Pilusos</h3>
-            <p>Accesorios con estilo para darle identidad a tus invitados.</p>
+        <div class="producto-fila">
+            <div class="sin-img-box">DIGITAL</div>
+            <div class="prod-info">
+                <h3>Redes sociales del evento</h3>
+                <p>Filtros, plantillas y contenido para Instagram y TikTok de tu fiesta.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="producto-fila">
-        <img src="vasos.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Vasos">
-        <div class="prod-info">
-            <h3>Vaso e Identidad</h3>
-            <p>Varios modelos: vasos irrompibles y personalizados para cada tipo de bebida.</p>
+        <div class="producto-fila">
+            <div class="sin-img-box">DIGITAL</div>
+            <div class="prod-info">
+                <h3>Video con fotos para evento</h3>
+                <p>Plasmamos los mejores recuerdos el momento más esperado de tu fiesta.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="producto-fila">
-        <img src="tote bag.png" class="prod-img" onclick="ampliar(this.src)" alt="Tote Bag">
-        <div class="prod-info">
-            <h3>Tote Bags</h3>
-            <p>Bolsas de tela sustentables con diseños minimalistas del evento.</p>
+        <div class="titulo-seccion">Ingreso</div>
+        <div class="producto-fila">
+            <div class="sin-img-box">ACCESO</div>
+            <div class="prod-info">
+                <h3>Pulseras de ingreso para los invitados</h3>
+                <p>Control de acceso con estilo: pulseras personalizadas irrompibles.</p>
+            </div>
         </div>
-    </div>
 
-</main>
+        <div class="titulo-seccion">Cartelería</div>
+        <div class="producto-fila">
+            <img src="cartel.jpg" class="prod-img" onclick="abrir(this.src)">
+            <div class="prod-info">
+                <h3>Cartel de ingreso</h3>
+                <p>Bienvenida personalizada en materiales rígidos de alta calidad.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <img src="cartel neon.jpg" class="prod-img" onclick="abrir(this.src)">
+            <div class="prod-info">
+                <h3>Cartel neón</h3>
+                <p>Ambientación luminosa con frases personalizadas.</p>
+            </div>
+        </div>
 
-<div id="miModal" class="modal" onclick="this.style.display='none'">
-    <img id="imgAmpliada">
-</div>
-
-<footer>
-    <h2>Contacto</h2>
-    <a href="https://wa.me/3534594320" class="btn wpp">WhatsApp: 3534594320</a>
-    <a href="https://instagram.com/sof.estudiodg" class="btn ig">@sof.estudiodg</a>
-</footer>
-
-<script>
-    function ampliar(src) {
-        document.getElementById('imgAmpliada').src = src;
-        document.getElementById('miModal').style.display = 'flex';
-    }
-</script>
-
-</body>
-</html>
+        <div class="titulo-seccion">Detalles</div>
+        <div class="producto-fila">
+            <img src="removedores de tragos.png" class="prod-img" onclick="abrir(this.src)">
+            <div class="prod-info">
+                <h3>Removedores para tragos</h3>
+                <p>Acrílicos personalizados que marcan la diferencia en la barra.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <img src="llaveros.jpg" class="prod-img" onclick="abrir(this.src)">
+            <div class="prod-info">
+                <h3>Llaveros</h3>
+                <p>Souvenirs útiles con la identidad de tu evento.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <img src="polaroid.jpg" class="prod-img" onclick="abrir(this.src)">
+            <div class="prod
