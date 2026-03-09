@@ -3,73 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soft Estudio | Merchandising de Eventos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <title>Soft Estudio | Merchandising & Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --negro: #1a1a1a; --gris: #f4f4f4; --blanco: #ffffff; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--blanco); color: var(--negro); }
+        :root { --negro: #1a1a1a; --gris: #f8f8f8; --blanco: #ffffff; --detalle: #666; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--blanco); color: var(--negro); scroll-behavior: smooth; }
         
-        /* Header y Logo */
-        header { text-align: center; padding: 50px 20px; background: var(--gris); }
-        .logo-img { max-width: 200px; height: auto; margin-bottom: 15px; }
-        h1 { font-weight: 300; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
-
-        /* Galería Pareja */
-        .seccion-productos { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; padding: 40px; max-width: 1100px; margin: auto; 
+        header { text-align: center; padding: 60px 20px; background: var(--gris); }
+        .logo-img { max-width: 220px; height: auto; margin-bottom: 15px; }
+        
+        /* Lista de Productos */
+        .contenedor-lista { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .producto-fila { 
+            display: flex; align-items: center; padding: 30px 0; 
+            border-bottom: 1px solid #eee; gap: 30px;
         }
-        .item { text-align: center; }
-        .img-box { 
-            width: 100%; 
-            aspect-ratio: 1 / 1; /* Esto hace que todas sean un cuadrado perfecto */
-            overflow: hidden; 
-            background: #eee;
-            border-radius: 4px;
-        }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .item h3 { margin-top: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .producto-fila:last-child { border-bottom: none; }
 
-        /* Contacto */
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
+        .prod-img { 
+            width: 150px; height: 150px; border-radius: 8px; 
+            object-fit: cover; cursor: pointer; transition: transform 0.3s;
+        }
+        .prod-img:hover { transform: scale(1.05); }
+
+        .prod-info { flex: 1; }
+        .prod-info h3 { margin: 0 0 10px 0; text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; }
+        .prod-info p { color: var(--detalle); font-size: 0.95rem; line-height: 1.4; }
+
+        /* Estilo para productos sin imagen */
+        .sin-foto { 
+            width: 150px; height: 150px; background: #333; color: white;
+            display: flex; align-items: center; text-align: center; 
+            font-size: 0.7rem; border-radius: 8px; padding: 10px; box-sizing: border-box;
+        }
+
+        /* Modal (Efecto Ampliar) */
+        .modal {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            justify-content: center; align-items: center; cursor: pointer;
+        }
+        .modal img { max-width: 90%; max-height: 80%; border-radius: 5px; }
+
+        /* Footer y Contacto */
+        footer { padding: 60px 20px; text-align: center; background: var(--gris); }
         .btn { 
             display: inline-block; padding: 12px 25px; margin: 10px; 
-            text-decoration: none; color: white; font-weight: bold; border-radius: 5px; 
+            text-decoration: none; color: white; font-weight: bold; border-radius: 50px; 
         }
-        .wpp { background: #25D366; }
-        .ig { background: #E1306C; }
+        .wpp { background: #25D366; } .ig { background: #E1306C; }
     </style>
 </head>
 <body>
 
 <header>
     <img src="logo softestudio.png" alt="Logo Soft Estudio" class="logo-img">
-    <h1>Objetos con Identidad</h1>
+    <p>OBJETOS ÚNICOS • EVENTOS CON IDENTIDAD</p>
 </header>
 
-<main class="seccion-productos">
-    <div class="item">
-        <div class="img-box"><img src="remeras.jpg" alt="Remeras"></div>
-        <h3>Remeras Personalizadas</h3>
+<main class="contenedor-lista">
+
+    <div class="producto-fila">
+        <img src="logo para evento.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Logo Evento">
+        <div class="prod-info">
+            <h3>Diseño de Logo para Evento</h3>
+            <p>Creamos la identidad visual de tu fiesta. Incluye propuestas personalizadas y aplicaciones.</p>
+        </div>
     </div>
 
-    <div class="item">
-        <div class="img-box"><img src="gorras.jpg" alt="Gorras"></div>
-        <h3>Gorras & Pilusos</h3>
+    <div class="producto-fila">
+        <div class="sin-foto">MEMORIAS EN VIDEO</div>
+        <div class="prod-info">
+            <h3>Video de fotos para eventos</h3>
+            <p>Plasmamos los mejores recuerdos: el momento más esperado de tu fiesta en un formato emocionante.</p>
+        </div>
     </div>
 
-    <div class="item">
-        <div class="img-box"><img src="vasos.jpg" alt="Vasos"></div>
-        <h3>Vasos & Coctelería</h3>
+    <div class="producto-fila">
+        <img src="remeras.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Remeras">
+        <div class="prod-info">
+            <h3>Remeras Personalizadas</h3>
+            <p>Prendas con diseño exclusivo para el staff o como recuerdo especial.</p>
+        </div>
     </div>
+
+    <div class="producto-fila">
+        <img src="gorras.jpeg" class="prod-img" onclick="ampliar(this.src)" alt="Gorras">
+        <div class="prod-info">
+            <h3>Gorras & Pilusos</h3>
+            <p>Accesorios con estilo para darle identidad a tus invitados.</p>
+        </div>
+    </div>
+
+    <div class="producto-fila">
+        <img src="vasos.jpg" class="prod-img" onclick="ampliar(this.src)" alt="Vasos">
+        <div class="prod-info">
+            <h3>Vaso e Identidad</h3>
+            <p>Varios modelos: vasos irrompibles y personalizados para cada tipo de bebida.</p>
+        </div>
+    </div>
+
+    <div class="producto-fila">
+        <img src="tote bag.png" class="prod-img" onclick="ampliar(this.src)" alt="Tote Bag">
+        <div class="prod-info">
+            <h3>Tote Bags</h3>
+            <p>Bolsas de tela sustentables con diseños minimalistas del evento.</p>
+        </div>
+    </div>
+
 </main>
 
+<div id="miModal" class="modal" onclick="this.style.display='none'">
+    <img id="imgAmpliada">
+</div>
+
 <footer>
-    <p>Recuerdos únicos para eventos inolvidables.</p>
-    <a href="https://wa.me/3534594320" class="btn wpp">WhatsApp</a>
-    <a href="https://instagram.com/sof.estudiodg" class="btn ig">Instagram</a>
+    <h2>Contacto</h2>
+    <a href="https://wa.me/3534594320" class="btn wpp">WhatsApp: 3534594320</a>
+    <a href="https://instagram.com/sof.estudiodg" class="btn ig">@sof.estudiodg</a>
 </footer>
+
+<script>
+    function ampliar(src) {
+        document.getElementById('imgAmpliada').src = src;
+        document.getElementById('miModal').style.display = 'flex';
+    }
+</script>
 
 </body>
 </html>
