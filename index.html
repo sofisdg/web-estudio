@@ -23,7 +23,7 @@
         }
 
         .site-wrapper {
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), 
+            background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)), 
                         url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
@@ -40,15 +40,6 @@
             width: 85%;
             height: auto;
             margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-        }
-
-        .slogan {
-            font-weight: 300;
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--gris-detalle);
         }
 
         .contenedor {
@@ -79,6 +70,7 @@
             position: relative;
             width: 160px;
             height: 160px;
+            flex-shrink: 0;
         }
 
         .prod-img {
@@ -87,32 +79,32 @@
             border-radius: 4px;
             object-fit: cover;
             cursor: zoom-in;
-            transition: 0.3s;
             border: 1px solid var(--divisor);
+            background: var(--gris-oscuro);
         }
 
         .badge-galeria {
             position: absolute;
             bottom: 5px;
             right: 5px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             color: white;
             font-size: 10px;
             padding: 2px 6px;
-            border-radius: 10px;
-            text-transform: uppercase;
+            border-radius: 4px;
+            border: 1px solid #444;
         }
 
         .prod-info { flex: 1; }
-        .prod-info h3 { margin: 0 0 10px; font-size: 1.2rem; }
-        .prod-info p { margin: 0; font-size: 1rem; color: var(--gris-detalle); font-weight: 300; }
+        .prod-info h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 600; }
+        .prod-info p { margin: 0; font-size: 0.95rem; color: var(--gris-detalle); font-weight: 300; }
 
-        /* MODAL / LIGHTBOX MEJORADO */
+        /* MODAL / LIGHTBOX */
         #modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.97);
+            background: rgba(0,0,0,0.98);
             z-index: 10000;
             flex-direction: column;
             justify-content: center;
@@ -121,27 +113,26 @@
 
         #modal-img {
             max-width: 85%;
-            max-height: 80%;
+            max-height: 75%;
+            object-fit: contain;
             border: 1px solid #333;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
         .modal-nav {
             display: flex;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .nav-btn {
             background: none;
             border: 1px solid white;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 25px;
             cursor: pointer;
             text-transform: uppercase;
+            font-size: 11px;
             letter-spacing: 2px;
-            font-size: 12px;
-            transition: 0.3s;
         }
 
         .nav-btn:hover { background: white; color: black; }
@@ -149,17 +140,16 @@
         .close-btn {
             position: absolute;
             top: 30px;
-            right: 30px;
-            font-size: 30px;
+            right: 40px;
+            font-size: 40px;
             color: white;
             cursor: pointer;
+            line-height: 1;
         }
 
         footer {
             text-align: center;
             padding: 100px 20px;
-            background: #050505;
-            margin-top: 100px;
             border-top: 1px solid var(--divisor);
         }
 
@@ -171,19 +161,21 @@
             text-decoration: none;
             color: white;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 0.9rem;
         }
         .wpp { background: #25D366; }
         .ig { background: #E1306C; }
 
+        @media (max-width: 600px) {
+            .producto-fila { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
 
 <div class="site-wrapper">
     <header>
-        <img src="logo-blanco.png" alt="Soft Estudio Logo" class="logo-img">
-        <div class="slogan">Eventos con Identidad</div>
+        <img src="logo-blanco.png" alt="Soft Estudio" class="logo-img">
     </header>
 
     <div class="contenedor">
@@ -192,42 +184,248 @@
         
         <div class="producto-fila">
             <div class="contenedor-galeria">
-                <img src="invitacion-web-1.jpg" class="prod-img" onclick="abrirGaleria(['invitacion-web-1.jpg', 'invitacion-web-2.jpg'])">
-                <div class="badge-galeria">+2 Fotos</div>
+                <img src="logo-evento-1.jpg" class="prod-img" onclick="abrirGaleria(['logo-evento-1.jpg', 'logo-evento-2.jpg','logo-evento-3.jpg'])">
+                <div class="badge-galeria">+ Fotos</div>
             </div>
             <div class="prod-info">
-                <h3>Diseño de invitación web</h3>
-                <p>Invitaciones interactivas con confirmación de asistencia y mapas.</p>
+                <h3>Diseño de logo para evento</h3>
+                <p>Identidad visual única creada exclusivamente para tu fiesta.</p>
             </div>
         </div>
 
         <div class="producto-fila">
             <div class="contenedor-galeria">
-                <img src="logo para evento.jpg" class="prod-img" onclick="abrirGaleria(['logo para evento.jpg'])">
+                <img src="invitacion-web-1.jpg" class="prod-img" onclick="abrirGaleria(['invitacion-web-1.jpg', 'invitacion-web-2.jpg'])">
+                <div class="badge-galeria">+ Fotos</div>
             </div>
             <div class="prod-info">
-                <h3>Diseño de logo para evento</h3>
-                <p>Identidad visual única para tu celebración.</p>
+                <h3>Diseño de invitación web</h3>
+                <p>Invitaciones interactivas con fotos, confirmación de asistencia, mapas, musica y cuenta regresiva.</p>
+            </div>
+        </div>
+
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="invitacion-etapas.jpg" class="prod-img" onclick="abrirGaleria(['invitacion-etapas.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Diseño de invitación en 3 etapas</h3>
+                <p>Acompañamos el proceso: Save the date, invitación formal y cuenta regresiva.</p>
+            </div>
+        </div>
+
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="redes.jpg" class="prod-img" onclick="abrirGaleria(['redes-1.jpg', 'redes-2.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Redes sociales del evento</h3>
+                <p>Branding aplicado contenido para Instagram para interactuar con los invitados antes de la gran fecha.</p>
+            </div>
+        </div>
+
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="video.jpg" class="prod-img" onclick="abrirGaleria(['video.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Video con fotos para evento</h3>
+                <p>Plasmamos los mejores recuerdos: el momento más esperado de tu fiesta.</p>
+            </div>
+        </div>
+
+        <div class="titulo-seccion">Ingreso</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="pulseras.jpg" class="prod-img" onclick="abrirGaleria(['pulseras.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Pulseras de ingreso para los invitados</h3>
+                <p>Seguridad y estilo con pulseras personalizadas irrompibles.</p>
+            </div>
+        </div>
+
+        <div class="titulo-seccion">Cartelería</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="cartel-ingreso.jpg" class="prod-img" onclick="abrirGaleria(['cartel-ingreso-1.jpg', 'cartel-ingreso-2.jpg', 'cartel-ingreso-3.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Cartel de ingreso</h3>
+                <p>Bienvenida personalizada en materiales rígidos de alta calidad.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="cartel-neon.jpg" class="prod-img" onclick="abrirGaleria(['cartel-neon.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Cartel neón</h3>
+                <p>Ambientación moderna con frases o logo personalizado en luz neón.</p>
+            </div>
+        </div>
+
+        <div class="titulo-seccion">Detalles</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="removedores de tragos.png" class="prod-img" onclick="abrirGaleria(['removedores de tragos-1.png', 'removedores de tragos-2.png', 'removedores de tragos-3.png'])">
+            </div>
+            <div class="prod-info">
+                <h3>Removedores para tragos</h3>
+                <p>Detalles en acrílico para personalizar la barra de bebidas.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="llaveros.jpg" class="prod-img" onclick="abrirGaleria(['llaveros-1.jpg', 'llaveros-2.jpg', 'llaveros-3.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Llaveros</h3>
+                <p>Souvenirs funcionales diseñados con la identidad del evento.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="polaroid.jpg" class="prod-img" onclick="abrirGaleria(['polaroid.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Foto polaroid</h3>
+                <p>Impresiones instantáneas con marcos personalizados.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="antiresaca.jpg" class="prod-img" onclick="abrirGaleria(['antiresaca-1.jpg', 'antiresaca-2.jpg', 'antiresaca-3.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Kit anti-resaca</h3>
+                <p>El detalle indispensable para que tus invitados disfruten el post-fiesta.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="capitan.jpg" class="prod-img" onclick="abrirGaleria(['capitan.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Capitán de mesa</h3>
+                <p>Identificación creativa para los referentes de cada mesa.</p>
+            </div>
+        </div>
+
+        <div class="titulo-seccion">Regalos Especiales</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="cajas.jpg" class="prod-img" onclick="abrirGaleria(['cajas-1.jpg','cajas-2.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Cajas personalizadas</h3>
+                <p>Packaging premium para regalos a novias e invitados especiales.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="tote bag.png" class="prod-img" onclick="abrirGaleria(['tote bag-1.png','tote bag-2.png'])">
+            </div>
+            <div class="prod-info">
+                <h3>Tote bag personalizadas</h3>
+                <p>Bolsas de tela con diseño exclusivo.</p>
+            </div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="neceser.jpg" class="prod-img" onclick="abrirGaleria(['neceser-1.jpg', 'neceser-2.jpg'])">
+            </div>
+            <div class="prod-info">
+                <h3>Neceser personalizados</h3>
+                <p>Organizadores personalizado.</p>
             </div>
         </div>
 
         <div class="titulo-seccion">Cotillón Premium</div>
         <div class="producto-fila">
             <div class="contenedor-galeria">
-                <img src="remeras-1.jpg" class="prod-img" onclick="abrirGaleria(['remeras-1.jpg', 'remeras-2.jpg', 'remeras-3.jpg'])">
-                <div class="badge-galeria">+3 Fotos</div>
+                <img src="remeras.jpg" class="prod-img" onclick="abrirGaleria(['remeras-1.jpg', 'remeras-2.jpg'])">
             </div>
-            <div class="prod-info">
-                <h3>Remeras Personalizadas</h3>
-                <p>Indumentaria diseñada exclusivamente para la tanda de baile.</p>
+            <div class="prod-info"><h3>Remeras</h3><p>Indumentaria personalizada para invitados.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="gorras.jpeg" class="prod-img" onclick="abrirGaleria(['gorras-1.jpeg','gorras-2.jpeg'])">
             </div>
+            <div class="prod-info"><h3>Gorras</h3><p>Accesorios con estilo para cotillón.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria">
+                <img src="pilusos.jpg" class="prod-img" onclick="abrirGaleria(['pilusos.jpg'])">
+            </div>
+            <div class="prod-info"><h3>Pilusos</h3><p>Tendencia y diseño en gorros pilusos personalizados.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="chalecos.jpg" class="prod-img" onclick="abrirGaleria(['chalecos.jpg'])"></div>
+            <div class="prod-info"><h3>Chalecos personalizados</h3><p>Diseños exclusivos para destacar en el evento.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="ojotas.jpg" class="prod-img" onclick="abrirGaleria(['ojotas.jpg'])"></div>
+            <div class="prod-info"><h3>Ojotas</h3><p>Máximo confort personalizado para el final de la fiesta.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="toallas.jpg" class="prod-img" onclick="abrirGaleria(['toallas.jpg'])"></div>
+            <div class="prod-info"><h3>Toallas</h3><p>Detalles delicados y útiles para tus invitados.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="vasos.jpg" class="prod-img" onclick="abrirGaleria(['vasos-1.jpg', 'vasos-2.jpg'])"></div>
+            <div class="prod-info"><h3>Vasos</h3><p>Varios modelos personalizados con la estética de tu fiesta.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="tazas.jpg" class="prod-img" onclick="abrirGaleria(['tazas.jpg'])"></div>
+            <div class="prod-info"><h3>Tazas</h3><p>Souvenir clásico con un toque de diseño premium.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="lentes.jpg" class="prod-img" onclick="abrirGaleria(['lentes.jpg'])"></div>
+            <div class="prod-info"><h3>Lentes</h3><p>Gafas personalizadas con frases o logo del evento.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="pelotas.jpg" class="prod-img" onclick="abrirGaleria(['pelotas.jpg'])"></div>
+            <div class="prod-info"><h3>Pelotas</h3><p>Inflables o deportivas para momentos de diversión.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="tattoos.jpg" class="prod-img" onclick="abrirGaleria(['tattoos.jpg'])"></div>
+            <div class="prod-info"><h3>Tatoo temporales</h3><p>Estación de tatuajes con diseños a medida.</p></div>
         </div>
 
+        <div class="titulo-seccion">Especial Novias</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="bata.jpg" class="prod-img" onclick="abrirGaleria(['bata.jpg'])"></div>
+            <div class="prod-info"><h3>Bata personalizada</h3><p>Diseños exclusivos para el momento del arreglo (Getting Ready).</p></div>
         </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="pantuflas.jpg" class="prod-img" onclick="abrirGaleria(['pantuflas.jpg'])"></div>
+            <div class="prod-info"><h3>Pantuflas</h3><p>Detalle de confort para la novia y sus acompañantes.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="conos.jpg" class="prod-img" onclick="abrirGaleria(['conos.jpg'])"></div>
+            <div class="prod-info"><h3>Conos para pétalos/arroz</h3><p>Papelería fina para la salida de la ceremonia.</p></div>
+        </div>
+
+        <div class="titulo-seccion">Mesa & Organización</div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="menu.jpg" class="prod-img" onclick="abrirGaleria(['menu-1.jpg', 'menu-2.jpg', 'menu-3.jpg', 'menu-4.jpg'])"></div>
+            <div class="prod-info"><h3>Diseño de Menú</h3><p>Tarjetería personalizada con el detalle de la cena.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="numeros-mesa.jpg" class="prod-img" onclick="abrirGaleria(['numeros-mesa-1.jpg','numeros-mesa-2.jpg'])"></div>
+            <div class="prod-info"><h3>Números de mesa</h3><p>Identificadores de mesa coordinados con el logo.</p></div>
+        </div>
+        <div class="producto-fila">
+            <div class="contenedor-galeria"><img src="listado.jpg" class="prod-img" onclick="abrirGaleria(['listado.jpg'])"></div>
+            <div class="prod-info"><h3>Listado de mesas</h3><p>Seating plan organizado para orientar a tus invitados.</p></div>
+        </div>
+
+    </div>
 
     <footer>
-        <h2>SOFT ESTUDIO</h2>
-        <p>¿Creamos la identidad de tu próximo evento?</p>
+        <h2 style="letter-spacing: 5px;">SOFT ESTUDIO</h2>
+        <p>¿Hablamos sobre tu evento?</p>
         <div style="margin-top: 30px;">
             <a href="https://wa.me/3534594320" class="btn-contacto wpp">WhatsApp</a>
             <a href="https://instagram.com/sof.estudiodg" class="btn-contacto ig">Instagram</a>
@@ -251,30 +449,22 @@
     function abrirGaleria(listaFotos) {
         imagenesActuales = listaFotos;
         indiceActual = 0;
-        
         const modal = document.getElementById('modal-overlay');
         const nav = document.getElementById('nav-container');
-        
-        // Si solo hay una foto, ocultamos los botones de navegación
         nav.style.display = (listaFotos.length > 1) ? 'flex' : 'none';
-        
         actualizarImagenModal();
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Bloquea el scroll
+        document.body.style.overflow = 'hidden';
     }
 
     function actualizarImagenModal() {
-        const img = document.getElementById('modal-img');
-        img.src = imagenesActuales[indiceActual];
+        document.getElementById('modal-img').src = imagenesActuales[indiceActual];
     }
 
-    function cambiarImagen(direccion) {
-        indiceActual += direccion;
-        
-        // Ciclo infinito (si llega al final vuelve al principio)
+    function cambiarImagen(dir) {
+        indiceActual += dir;
         if (indiceActual >= imagenesActuales.length) indiceActual = 0;
         if (indiceActual < 0) indiceActual = imagenesActuales.length - 1;
-        
         actualizarImagenModal();
     }
 
@@ -283,10 +473,7 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Cerrar con la tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === "Escape") cerrarImagen();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === "Escape") cerrarImagen(); });
 </script>
 
 </body>
